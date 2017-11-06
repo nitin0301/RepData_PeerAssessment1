@@ -45,7 +45,7 @@ daysTable <- summarise(days,numSteps = sum(steps, na.rm=TRUE))
 ##### Histogram of the total number of steps taken each day
 ```{r , echo=TRUE,warning=FALSE, message=FALSE}
 hist(daysTable$numSteps)
-dev.copy(png,file="./Figures/Fig1.png")
+#dev.copy(png,file="./Figures/Fig1.png")
 ```
 
 #####  Mean total number of steps taken per day
@@ -64,7 +64,7 @@ median(daysTable$numSteps)
 timeInterval <- group_by(df,interval)
 intervalTable <- summarise(timeInterval,numSteps = mean(steps, na.rm=TRUE))
 plot(intervalTable$interval,intervalTable$numSteps,type = 'l',col="blue")
-dev.copy(png,file="./Figures/Fig2.png")
+#dev.copy(png,file="./Figures/Fig2.png")
 ```
 
 The interval "835", on average across all the days in the dataset, contains the maximum number of steps
@@ -90,7 +90,7 @@ daysNew <- group_by(dfNew,date)
 daysNewTable <- summarise(daysNew,numSteps = sum(steps, na.rm=TRUE))
 # Histogram of the total number of steps taken each day
 hist(daysNewTable$numSteps)
-dev.copy(png,file="./Figures/Fig3.png")
+#dev.copy(png,file="./Figures/Fig3.png")
 ```
 
 #####  Mean total number of steps taken per day
@@ -109,7 +109,7 @@ The mean and median are different from the case where NA was not imputed.
 ```{r , echo=TRUE,warning=FALSE, message=FALSE}
 plot(x=daysTable$date,y=daysTable$numSteps,type="l")
 points(x=daysNewTable$date,y=daysNewTable$numSteps,type="l",col="blue")
-dev.copy(png,file="./Figures/Fig4.png")
+#dev.copy(png,file="./Figures/Fig4.png")
 ```
 
 The effect of imputing fills the spikes seen with missing data.
@@ -139,9 +139,7 @@ dfNew %>% group_by(Week_day_end,interval) %>%
         labs(y="Number of steps")+
         theme(strip.background = element_rect(colour = "black", fill = "orange"),
               strip.placement = "outside",
-              text = element_text(family = "Times",size = 18))+
-        ggsave(filename="Fig4.png",
-               path="./Figures/")
+              text = element_text(family = "Times",size = 18))
 ```
 
 There is indeed some difference in the steps taken especially between intervals 750 and 1000.

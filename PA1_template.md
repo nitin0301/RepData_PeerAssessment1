@@ -49,15 +49,10 @@ daysTable <- summarise(days,numSteps = sum(steps, na.rm=TRUE))
 hist(daysTable$numSteps)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
 
 ```r
-dev.copy(png,file="./Figures/Fig1.png")
-```
-
-```
-## quartz_off_screen 
-##                 3
+#dev.copy(png,file="./Figures/Fig1.png")
 ```
 
 #####  Mean total number of steps taken per day
@@ -89,15 +84,10 @@ intervalTable <- summarise(timeInterval,numSteps = mean(steps, na.rm=TRUE))
 plot(intervalTable$interval,intervalTable$numSteps,type = 'l',col="blue")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
 
 ```r
-dev.copy(png,file="./Figures/Fig2.png")
-```
-
-```
-## quartz_off_screen 
-##                 4
+#dev.copy(png,file="./Figures/Fig2.png")
 ```
 
 The interval "835", on average across all the days in the dataset, contains the maximum number of steps
@@ -132,15 +122,10 @@ daysNewTable <- summarise(daysNew,numSteps = sum(steps, na.rm=TRUE))
 hist(daysNewTable$numSteps)
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
 
 ```r
-dev.copy(png,file="./Figures/Fig3.png")
-```
-
-```
-## quartz_off_screen 
-##                 5
+#dev.copy(png,file="./Figures/Fig3.png")
 ```
 
 #####  Mean total number of steps taken per day
@@ -172,15 +157,10 @@ plot(x=daysTable$date,y=daysTable$numSteps,type="l")
 points(x=daysNewTable$date,y=daysNewTable$numSteps,type="l",col="blue")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
 
 ```r
-dev.copy(png,file="./Figures/Fig4.png")
-```
-
-```
-## quartz_off_screen 
-##                 6
+#dev.copy(png,file="./Figures/Fig4.png")
 ```
 
 The effect of imputing fills the spikes seen with missing data.
@@ -211,12 +191,10 @@ dfNew %>% group_by(Week_day_end,interval) %>%
         labs(y="Number of steps")+
         theme(strip.background = element_rect(colour = "black", fill = "orange"),
               strip.placement = "outside",
-              text = element_text(family = "Times",size = 18))+
-        ggsave(filename="Fig4.png",
-               path="./Figures/")
+              text = element_text(family = "Times",size = 18))
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
 
 There is indeed some difference in the steps taken especially between intervals 750 and 1000.
 
